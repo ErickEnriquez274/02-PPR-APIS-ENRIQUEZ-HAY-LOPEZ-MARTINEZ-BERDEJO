@@ -85,3 +85,30 @@ print("URL consultada:", url_usuario)
 print("Datos del usuario:", usuario)
 
 #PARTE FINAL DEL DESARROLLADOR 3. LOPEZ BERMON DIEGO DE JESUS
+
+#PARTE INICIAL DEL DESARROLLADOR 4. MARTINEZ DE DIOS SONIA, BERDEJO SALAS GEORGETTE
+# Extraer los datos del usuario.
+nombre = usuario["firstName"]
+apellido = usuario["lastName"]
+ciudad = usuario["address"]["city"]
+
+# Construir el mensaje solicitado.
+mensaje = (
+    f"El cliente con más productos regulares es "
+    f"{nombre} {apellido} (ID: {id_usuario}), "
+    f"de la ciudad de {ciudad}. "
+    f"Compró un total de {mayor_cantidad} productos válidos."
+)
+
+# Preparar el reporte con separadores.
+separador = "=" * 70
+reporte = f"{separador}\n{mensaje}\n{separador}\n"
+
+# Mostrar el reporte en consola.
+print(reporte, end="")
+
+# Guardar el mismo reporte en el archivo.
+with open("reporte_auditoria.txt", "w", encoding="utf-8") as archivo:
+    archivo.write(reporte)
+
+# PARTE FINAL DEL DESARROLLADOR 4. MARTINEZ DE DIOS SONIA, BERDEJO SALAS GEORGETTE
