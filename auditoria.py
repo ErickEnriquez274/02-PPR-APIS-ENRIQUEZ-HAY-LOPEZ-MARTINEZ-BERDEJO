@@ -16,10 +16,13 @@ if respuesta.status_code != 200:
     )
 
 datos = respuesta.json()
+
+#PARTE DEL DESARROLLADOR 2. HAY MARTINEZ JUAN PABLO
+
 carritos = datos["carts"]
 
-
 print(json.dumps(carritos, indent=4, ensure_ascii=False))
+
 
 totales = []
 total_general = 0
@@ -46,3 +49,37 @@ for carrito in carritos:
 
 print("=" * 50)
 print(f"Total general: {total_general} unidades válidas")
+
+#PARTE  FINAL DEL DESARROLLADOR 2. HAY MARTINEZ JUAN PABLO
+
+id_carrito = 20
+id_usuario = 17
+mayor_cantidad = 16
+
+# Construir la URL con el ID del usuario.
+url_usuario = f"https://dummyjson.com/users/{id_usuario}"
+
+# Ejecutar la segunda petición.
+try:
+    respuesta_usuario = requests.get(
+        url_usuario,
+        timeout=15
+    )
+except requests.exceptions.RequestException as error:
+    raise SystemExit(f"Error de conexión: {error}")
+
+# Validar el estado HTTP.
+if respuesta_usuario.status_code != 200:
+    raise SystemExit(
+        f"Error al consultar usuario: HTTP "
+        f"{respuesta_usuario.status_code}"
+    )
+
+# Obtener los datos del usuario.
+usuario = respuesta_usuario.json()
+
+print("ID del carrito:", id_carrito)
+print("ID del usuario:", id_usuario)
+print("Máximo de unidades válidas:", mayor_cantidad)
+print("URL consultada:", url_usuario)
+print("Datos del usuario:", usuario)
